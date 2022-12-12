@@ -1,0 +1,13 @@
+vagrant init <vagrantfile> = Inicializa o vagrant a partir do local .
+vagrant up = inicializa a VM baseando-se no Vagrantfile
+vagrant halt = desliga a VM
+vagrant destoy = manda a VM para o espaço (mas não apaga o box)
+vagrant reload = reinicia a VM
+vagrant status = exibe o status de execução das VM's
+vagrant ssh = acessa a VM via SSH
+vagrant ssh-config = exibe as configurações do ssh relativo ao vagrant
+-Chave privada no client, chave publica no servidor
+-ssh-keygen = Gera chave ssh
+-ssh -i _arquivo_com_chave_ vagrant@_ip_
+vagrant validate = valida a sintaxe
+
