@@ -1,0 +1,20 @@
+#Configuração Gloabal
+Vagrant.configure("2") do |config|
+	config.vm.provider "virtualbox" do |v|
+		v.memory = 1024
+		v.cpus = 2
+	end	
+	config.vm.box = "ubuntu/trusty64"
+	config.vm.box_download_insecure = true #para evitar erro de SSL
+
+	#VM k8s
+	config.vm.define "k8s_lab" do |k8s|
+		k8s.vm.network "public_network", auto_config: false
+		k8s.vm.provision "shell",
+			run: "always",
+			inline: "ifconfig eth1 10.0.0.200/24"
+		k8s.vm.provision "shell",
+			run: "always",
+			inline:	"cat /vagrant/ssh_keys/id_rsa.pub >> /home/vagrant/.ssh/authorized_keys"
+	end
+end
